@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Container, Form, Button, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "../Header/header";
+import FaqForm from "./create_faq";
 
 function CategoryForm() {
   const [AssistantName, setAssistantName] = useState("");
@@ -81,6 +82,9 @@ function CategoryForm() {
             </Button>
           </div>
         </Form>
+        <div>
+          <FaqForm />
+        </div>
       </Container>
     </>
   );
