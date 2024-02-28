@@ -4,11 +4,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "../Header/header";
 import FaqForm from "./create_faq";
 import FaqList from "./faq/faq_list";
+import { useNavigate } from "react-router-dom";
 
 function CategoryForm() {
   const [AssistantName, setAssistantName] = useState("");
   const [AssistantInstruction, setAssistantInstruction] = useState("");
   const [faq, setFaq] = useState([]);
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -38,7 +40,8 @@ function CategoryForm() {
         console.error("Error fetching data:", error);
       });
 
-    // console.log({ AssistantName, AssistantInstruction });
+    console.log({ AssistantName, AssistantInstruction, faq });
+    navigate("/categories");
   };
 
   return (
@@ -76,7 +79,13 @@ function CategoryForm() {
             </Col>
           </Form.Group>
           <div className="text-center">
-            <Button variant="secondary" type="button">
+            <Button
+              variant="secondary"
+              type="button"
+              onClick={() => {
+                navigate("/categories");
+              }}
+            >
               Cancel
             </Button>{" "}
             <Button variant="primary" type="submit">
