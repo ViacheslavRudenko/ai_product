@@ -40,7 +40,14 @@ function CategoryForm() {
         console.error("Error fetching data:", error);
       });
 
-    console.log({ AssistantName, AssistantInstruction, faq });
+    const categoryData = {
+      id: Math.random(),
+      AssistantName,
+      AssistantInstruction,
+      faq,
+    };
+
+    console.log(categoryData);
     navigate("/categories");
   };
 
