@@ -12,6 +12,7 @@ function CustomInput({ label, placeholder, value, onChange }) {
       <Col>
         <Form.Control
           type="text"
+          className="rounded-0"
           placeholder={placeholder ?? placeholder}
           style={{ height: "50px" }}
           value={value}
