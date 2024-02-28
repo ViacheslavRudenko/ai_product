@@ -3,28 +3,37 @@ import { Form, Button, Stack } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import CustomInput from "./custom_input";
 
-function FaqForm({}) {
-  const [QuestionValue, setQuestionValue] = useState("");
-  const [AnswerValue, setAnswerValue] = useState("");
+function FaqForm({ faq, setFaq }) {
+  const [question, setQuestion] = useState("");
+  const [answer, setAnswer] = useState("");
+  const [isFormError, setIsFormError] = useState(false);
+
   const handleSubmit = (event) => {
+    const isDataValied = question.length && answer.length;
+    setIsFormError(!isDataValied);
     event.preventDefault();
-    console.log(QuestionValue, AnswerValue);
+    if (isDataValied) {
+      setFaq([{ id: Math.random(), question, answer }, ...faq]);
+      setQuestion("");
+      setAnswer("");
+    }
   };
   return (
-    <div style={{ paddingTop: 50, maxWidth: 600 }}>
+    <div>
       <Form onSubmit={handleSubmit}>
         <Stack gap={5} direction="horizontal">
           <CustomInput
             label={"Question"}
-            value={QuestionValue}
-            onChange={setQuestionValue}
+            value={question}
+            onChange={setQuestion}
           />
-          <CustomInput
-            label={"Answer"}
-            value={AnswerValue}
-            onChange={setAnswerValue}
-          />
+          <CustomInput label={"Answer"} value={answer} onChange={setAnswer} />
         </Stack>
+        {isFormError ? (
+          <p style={{ color: "red" }}>All input is required</p>
+        ) : (
+          <></>
+        )}
         <div className="text-end">
           <Button
             variant="secondary"

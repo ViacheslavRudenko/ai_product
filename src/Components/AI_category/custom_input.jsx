@@ -3,7 +3,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Col, Form } from "react-bootstrap";
 
-function CustomInput({ label, placeholder, value, onChange }) {
+function CustomInput({ label, placeholder, value, onChange, hasError }) {
   return (
     <Form.Group as={Col} className="mb-3" controlId="formCategoryName">
       <Form.Label column sm={2}>

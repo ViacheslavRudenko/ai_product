@@ -25,3 +25,8 @@
 .TableRow:hover {
   background-color: #00b087;
 }
+
+.faq-bg {
+  background-color: #d9d9d9;
+  padding: 24px;
+}

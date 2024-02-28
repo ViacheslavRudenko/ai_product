@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { Container, Form, Button, Row, Col } from "react-bootstrap";
+import { Container, Form, Button, Row, Col, Stack } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "../Header/header";
 import FaqForm from "./create_faq";
+import FaqList from "./faq/faq_list";
 
 function CategoryForm() {
   const [AssistantName, setAssistantName] = useState("");
   const [AssistantInstruction, setAssistantInstruction] = useState("");
+  const [faq, setFaq] = useState([]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -82,9 +84,10 @@ function CategoryForm() {
             </Button>
           </div>
         </Form>
-        <div>
-          <FaqForm />
-        </div>
+        <Stack style={{ paddingTop: 50, maxWidth: 600 }} gap={4}>
+          <FaqForm faq={faq} setFaq={setFaq} />
+          {faq.length ? <FaqList faq={faq} /> : <></>}
+        </Stack>
       </Container>
     </>
   );
